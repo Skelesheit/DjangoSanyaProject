@@ -23,4 +23,4 @@ class OrderStatus(models.TextChoices):
     IN_DELIVERY = 'in_delivery', 'Доставляется'
     DELIVERED = 'delivered', 'Доставлен'
     DONE = 'done', 'Выполнен'
-    RETURNED = 'returned', 'Возврат'
+    REFUND = 'refund', 'Возврат'

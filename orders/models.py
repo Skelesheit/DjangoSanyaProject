@@ -34,8 +34,8 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     note = models.TextField(blank=True, null=True)
 
-    contact = models.ManyToManyField(Contact, related_name="orders")
-    files = models.ForeignKey(PrintFile, on_delete=models.CASCADE, related_name="orders")
+    contact = models.ManyToOneRel(Contact, on_delete=models.CASCADE, related_name="orders")
+    files = models.ManyToManyRel(PrintFile,  related_name="orders")
 
     class Meta:
         verbose_name = _("Заказ")
