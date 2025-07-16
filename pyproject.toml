@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "djangosanyaproject"
+version = "0.1.0"
+description = ""
+authors = ["Skelesheit <Skelesheit@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django-rest-framework = "^0.1.0"
+gunicorn = "^23.0.0"
+drf-spectacular = "^0.28.0"
+psycopg = "^3.2.9"
+django-filter = "^25.1"
+django-unfold = "^0.62.0"
+spectacular = "^0.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

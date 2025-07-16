@@ -1,0 +1,35 @@
+# Игнорируем виртуальное окружение
+.env/
+env/
+.venv
+.git
+
+# Игнорируем локальные файлы и папки
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.sqlite3
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Игнорируем файлы разработки
+*.md
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+.env
+.idea/
+.vscode/
+
+# Игнорируем временные файлы и кэш
+*.bak
+*.swp
+*~
+.cache/
+.pytest_cache/
+.coverage
