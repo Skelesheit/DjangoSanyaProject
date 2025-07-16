@@ -3,28 +3,11 @@ from orders.enums import Material, Quality, OrderStatus
 from django.utils.translation import gettext_lazy as _
 
 
-class Order(models.Model):
-    material = models.CharField(max_length=20, choices=Material)
-    quality = models.CharField(max_length=20, choices=Quality)
-    count = models.IntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    note = models.TextField(blank=True, null=True)
-
-    class Meta:
-        verbose_name = _("Заказ")
-        verbose_name_plural = _("Заказы")
-
-    def __str__(self):
-        return f"Order #{self.id} ({self.material}, {self.quality})"
-
-
 class Contact(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     email = models.EmailField(blank=False, null=False)
     phone = models.CharField(max_length=20)
     telegram = models.CharField(max_length=40)
-
-    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name="contact")
 
     class Meta:
         verbose_name = _("Контакт")
@@ -39,11 +22,27 @@ class PrintFile(models.Model):
     count = models.IntegerField(default=1)
     note = models.TextField(max_length=200)  # наше примечание
 
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="files")
-
     class Meta:
         verbose_name = _("Файл")
         verbose_name_plural = _("Файлы")
+
+
+class Order(models.Model):
+    material = models.CharField(max_length=20, choices=Material)
+    quality = models.CharField(max_length=20, choices=Quality)
+    count = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    note = models.TextField(blank=True, null=True)
+
+    contact = models.ManyToManyField(Contact, related_name="orders")
+    files = models.ForeignKey(PrintFile, on_delete=models.CASCADE, related_name="orders")
+
+    class Meta:
+        verbose_name = _("Заказ")
+        verbose_name_plural = _("Заказы")
+
+    def __str__(self):
+        return f"Order #{self.id} ({self.material}, {self.quality})"
 
 
 class OrderHistory(models.Model):

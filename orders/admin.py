@@ -16,9 +16,11 @@ class ContactInline(admin.StackedInline):
 
 class PrintFileInline(admin.TabularInline):
     model = PrintFile
-    extra = 1  # сколько пустых форм по умолчанию
-    verbose_name = _("Файл")
-    verbose_name_plural = _("Файлы")
+    extra = 1  # сколько пустых строк по умолчанию
+    fields = ("file", "filename", "size", "count", "note")
+    verbose_name = "Файл"
+    verbose_name_plural = "Файлы"
+
 
 
 class OrderHistoryInline(admin.TabularInline):
@@ -60,6 +62,7 @@ class OrderAdmin(ModelAdmin):
 
 @admin.register(PrintFile)
 class PrintFileAdmin(ModelAdmin):
+    inlines = []
     list_display = ("filename", "order", "size", "count", "created_at")
     list_filter = ("created_at", "order__material", "order__quality")
     search_fields = ("filename", "order__id")

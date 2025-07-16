@@ -16,11 +16,11 @@ class Quality(models.TextChoices):
 
 
 class OrderStatus(models.TextChoices):
-    NEW = "Новый"
-    IN_REVIEW = "В обработке"
-    PRINTING = "Печать"
-    SHIPPED_TO_DELIVERY = "Отправлено в доставку"
-    IN_DELIVERY = "Доставляется"
-    DELIVERED = "Доставлен"
-    DONE = "Выполнен"
-    RETURNED = "Возврат"
+    NEW = 'new', 'Новый'
+    IN_REVIEW = 'in_review', 'В обработке'
+    PRINTING = 'printing', 'Печать'
+    SHIPPED_TO_DELIVERY = 'shipped_to_delivery', 'Отправлено в доставку'
+    IN_DELIVERY = 'in_delivery', 'Доставляется'
+    DELIVERED = 'delivered', 'Доставлен'
+    DONE = 'done', 'Выполнен'
+    RETURNED = 'returned', 'Возврат'
